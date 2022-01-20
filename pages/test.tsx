@@ -1,24 +1,36 @@
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+
+// interface IMyTypographyProps extends TypographyProps {
+//   fontFamily?: '';
+// }
+
+// const MyTypography = styled(MuiTypography)(({ theme }) => ({
+//   color: theme.palette.primary.contrastText,
+//   backgroundColor: theme.palette.primary.main,
+//   padding: theme.spacing(1),
+//   borderRadius: theme.shape.borderRadius,
+// }));
 
 const Test = () => {
   return (
     <>
       Test
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, perferendis!</p>
+      <p>Circular Std Black 40pt, line-height 52pt</p>
+      <hr />
       <Button>I cool btn</Button>
       <div>
-        <Button color="secondary" variant="contained">Outlined</Button>
+        <Button color="secondary" variant="contained">Button</Button>
       </div>
       <div>
-        <Button variant="contained">Contained</Button>
+        <Button variant="contained">Button</Button>
       </div>
       <div>
-        <Button variant="outlined">Outlined</Button>
+        <Button variant="outlined">Button</Button>
       </div>
       <hr />
       <div>
-        <Typography>Lorem ipsum dolor.</Typography>
+        {/* <MyTypography>Lorem ipsum dolor.</MyTypography> */}
+        {/* <MuiTypograph>Lorem ipsum</MuiTypograph> */}
       </div>
 
     </>

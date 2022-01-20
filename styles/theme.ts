@@ -1,22 +1,7 @@
 import { createTheme, css } from '@mui/material/styles';
 
-import CircularStdBlack900 from '../assets/fonts/CircularStd/CircularStd-Black-900.ttf';
-
-// Create a theme instance.
-
-// const CircularStdBlack = {
-//   fontFamily: 'CircularStd Black',
-//   fontStyle: 'normal',
-//   fontWeight: 100,
-//   src: `url(${CircularStdBlackTtf})`,
-// };
-//
-// const NeonderthawRegular = {
-//   fontFamily: 'Neonderthaw Regular',
-//   fontStyle: 'normal',
-//   fontWeight: 100,
-//   src: `url(${NeonderthawRegularTtf})`,
-// };
+import CircularStdFont from '../assets/fonts/CircularStd';
+import MonsterRatFont from '../assets/fonts/Montserrat';
 
 const theme = createTheme({
   palette: {
@@ -60,22 +45,16 @@ const theme = createTheme({
       color: '#000000',
     },
     fontFamily: [
-      'Circular Std Black',
+      ...CircularStdFont.fontFamily,
+      ...MonsterRatFont.fontFamily,
       'sans',
     ].join(', '),
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: css`
-        @font-face {
-          font-family: 'Circular Std Black';
-          font-style: normal;
-          font-display: swap;
-          src: local('Circular Std Black'),
-          local('Circular-Std-Black-900'),
-          url(${CircularStdBlack900}) format('truetype');
-        }
-
+        ${CircularStdFont.fontFaces}
+        ${MonsterRatFont.fontFaces}
         * {
           margin: 0;
           padding: 0;
@@ -84,22 +63,13 @@ const theme = createTheme({
         }
       `.styles,
     },
-
-    // MuiCssBaseline: {
-    //   styleOverrides: css`
-    //     // @font-face {
-    //     //   font-family: 'Neonderthaw Regular';
-    //     //   font-style: normal;
-    //     //   font-display: swap;
-    //     //   font-weight: 700;
-    //     //   src: local('Neonderthaw Regular'), local('Neonderthaw-Regular'), url(${NeonderthawRegular})
-    // format('ttf'); // }  body { background: cyan; //font-family: 'Neonderthaw Regular', 'sans-serif'; //font-family:
-    // 'fantasy', 'sans-serif'; }  p { //font-family: "Neonderthaw Regular", "sans-serif"; font-family: "fantasy",
-    // "sans-serif"; } `.styles, },
     MuiButton: {
       styleOverrides: {
         root: {
           borderRadius: '100px',
+          fontSize: '16px',
+          minWidth: '112px',
+          lineHeight: '2.1',
         },
         outlined: {
           color: '#000000',
@@ -114,5 +84,7 @@ const theme = createTheme({
     borderRadius: '6px',
   },
 });
+
+console.log('%c theme ', 'background: #222; color: red', theme);
 
 export default theme;

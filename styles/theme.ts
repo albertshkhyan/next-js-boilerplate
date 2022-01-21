@@ -1,45 +1,66 @@
-import { CSSProperties } from 'react';
-
-import { Theme } from '@mui/material';
-import { TypographyOptions } from '@mui/material/styles/createTypography';
-import { createTheme, ThemeOptions, css } from '@mui/material/styles';
+import { createTheme, ThemeOptions, ThemeProvider, css } from '@mui/material/styles';
 
 import CircularStdFont from '../assets/fonts/CircularStd';
 import MonsterRatFont from '../assets/fonts/Montserrat';
 import { FontFamilyNames } from '../types/global/theme/fonts';
 import DomineFont from '../assets/fonts/Domine';
 
+declare module '@mui/material/styles' {
+  // interface Palette {
+  //   neutral: Palette['primary'];
+  // }
+  //
+  // // allow configuration using `createTheme`
+  // interface PaletteOptions {
+  //   neutral?: PaletteOptions['primary'];
+  // }
+
+  // # For Typography
+  interface TypographyVariants {
+    poster: React.CSSProperties;
+    h7: React.CSSProperties;
+    title1: React.CSSProperties;
+    inputTitle: React.CSSProperties;
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    poster?: React.CSSProperties;
+    h7?: React.CSSProperties;
+    title1?: React.CSSProperties;
+    inputTitle?: React.CSSProperties;
+  }
+}
+
+// Update the Button's color prop options
+// declare module '@mui/material/Button' {
+//   interface ButtonPropsColorOverrides {
+//     neutral: true;
+//   }
+// }
+
+// Update the Typography's variant prop options
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
+    poster: true;
+    h7: true;
     title1: true;
     inputTitle: true;
-    h7: true;
   }
 }
 
-declare module '@material-ui/core/Button' {
-  interface ButtonPropsColorOverrides {
-    koko: true;
-  }
-}
 
-interface ExtendedTypographyOptions extends TypographyOptions {
-  title1: CSSProperties;
-  inputTitle: CSSProperties;
-  h7: CSSProperties;
-}
-const theme: Theme = createTheme({
+const theme: ThemeOptions = createTheme({
   palette: {
-    // sell: 'red',
     common: {
       black: 'cyan',
       white: '#ffffff',
     },
     primary: {
       light: '#B3E5FC',
-      main: '#039E4F',
-      background: 'red',
-      dark: '#027e3f',
+      // main: '#039E4F',
+      main: '#002E99',
+      dark: '#01257b',
       contrastText: '#212121',
     },
     text: {
@@ -47,16 +68,17 @@ const theme: Theme = createTheme({
       secondary: '#ffffff',
     },
     secondary: {
-      main: '#002E99',
-      dark: '#01257b',
+      main: '#039E4F',
+      dark: '#027e3f',
       contrastText: '#ffffff',
     },
     grey: {
-      500: '#E9E9E9',
-      700: '#ACACAC',
+      500: '#D4D3D3',
+      700: '#E9E9E9',
     },
     info: {
-      main: '#1bb2f1',
+      main: '#D4D3D3',
+      dark: '#E9E9E9',
     },
     success: {
       main: '#00d589',
@@ -67,13 +89,16 @@ const theme: Theme = createTheme({
     },
     error: {
       main: '#FF5C00',
-      // dark: '#cf7a49',
+      dark: '#c94c00',
     },
     background: {
       default: '#fff',
     },
   },
   typography: {
+    poster: {
+      color: 'red',
+    },
     allVariants: {
       color: '#000000',
     },
@@ -181,7 +206,7 @@ const theme: Theme = createTheme({
       letterSpacing: '-0.5px',
       textTransform: 'uppercase',
     },
-  } as ExtendedTypographyOptions,
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: css`
@@ -201,15 +226,8 @@ const theme: Theme = createTheme({
           borderRadius: '100px',
           fontSize: '16px',
           minWidth: '112px',
-          lineHeight: '2.1',
+          lineHeight: '1.95',
           textTransform: 'none',
-        },
-        outlined: {
-          borderWidth: '2px',
-          // color: '#333333',
-          '&:hover': {
-            borderWidth: '2px',
-          },
         },
         contained: {
           color: '#ffffff',
@@ -220,6 +238,6 @@ const theme: Theme = createTheme({
   shape: {
     borderRadius: '6px',
   },
-} as ThemeOptions);
+});
 
 export default theme;

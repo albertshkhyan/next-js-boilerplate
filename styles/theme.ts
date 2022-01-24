@@ -1,4 +1,6 @@
-import { createTheme, ThemeOptions, ThemeProvider, css } from '@mui/material/styles';
+import { CSSProperties } from 'react';
+
+import { createTheme, css, ThemeOptions } from '@mui/material/styles';
 
 import CircularStdFont from '../assets/fonts/CircularStd';
 import MonsterRatFont from '../assets/fonts/Montserrat';
@@ -6,38 +8,22 @@ import { FontFamilyNames } from '../types/global/theme/fonts';
 import DomineFont from '../assets/fonts/Domine';
 
 declare module '@mui/material/styles' {
-  // interface Palette {
-  //   neutral: Palette['primary'];
-  // }
-  //
-  // // allow configuration using `createTheme`
-  // interface PaletteOptions {
-  //   neutral?: PaletteOptions['primary'];
-  // }
-
   // # For Typography
   interface TypographyVariants {
-    poster: React.CSSProperties;
-    h7: React.CSSProperties;
-    title1: React.CSSProperties;
-    inputTitle: React.CSSProperties;
+    poster: CSSProperties;
+    h7: CSSProperties;
+    title1: CSSProperties;
+    inputTitle: CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
-    poster?: React.CSSProperties;
-    h7?: React.CSSProperties;
-    title1?: React.CSSProperties;
-    inputTitle?: React.CSSProperties;
+    poster?: CSSProperties;
+    h7?: CSSProperties;
+    title1?: CSSProperties;
+    inputTitle?: CSSProperties;
   }
 }
-
-// Update the Button's color prop options
-// declare module '@mui/material/Button' {
-//   interface ButtonPropsColorOverrides {
-//     neutral: true;
-//   }
-// }
 
 // Update the Typography's variant prop options
 declare module '@mui/material/Typography' {
@@ -48,7 +34,6 @@ declare module '@mui/material/Typography' {
     inputTitle: true;
   }
 }
-
 
 const theme: ThemeOptions = createTheme({
   palette: {
@@ -75,6 +60,7 @@ const theme: ThemeOptions = createTheme({
     grey: {
       500: '#D4D3D3',
       700: '#E9E9E9',
+      800: '#F6F6F6',
     },
     info: {
       main: '#D4D3D3',
@@ -220,6 +206,7 @@ const theme: ThemeOptions = createTheme({
         }
       `.styles,
     },
+    // # Button
     MuiButton: {
       styleOverrides: {
         root: {
@@ -231,6 +218,40 @@ const theme: ThemeOptions = createTheme({
         },
         contained: {
           color: '#ffffff',
+        },
+      },
+    },
+    // # Input
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontFamily: FontFamilyNames.CircularStdBold,
+          fontSize: 16,
+          textTransform: 'uppercase',
+          letterSpacing: '-0.5px',
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          maxWidth: 395,
+          width: '100%',
+          // border: '1px solid #039E4F',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        input: {
+          padding: '14px 24px 12px',
+          maxWidth: '395px',
+          fontSize: 14,
+          border: '1px solid #039E4F',
+          borderRadius: 6,
+        },
+        notchedOutline: {
+          border: 'none',
         },
       },
     },

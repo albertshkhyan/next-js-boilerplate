@@ -13,7 +13,7 @@ const StyledTextField = styled((props: TextFieldProps) => (
 ))(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
     '& .Mui-disabled': {
-      background: theme.palette.grey[800],
+      background: theme.palette.grey[200],
       border: 'none',
     },
   },
